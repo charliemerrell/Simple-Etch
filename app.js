@@ -10,8 +10,9 @@ initialiseDb();
 const app = express();
 
 app.use(
-    express.static(path.join("__dirname", "etch-client", "dist", "etch-client"))
+    express.static(path.join(__dirname, "etch-client", "dist", "etch-client"))
 );
+
 app.use(express.json());
 
 app.post("/api/login", (req, res) => {
