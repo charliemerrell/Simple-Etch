@@ -1,4 +1,5 @@
 const express = require("express");
+const path = require("path");
 const authenticate = require("./middleware/authenticate");
 require("dotenv").config();
 const db = require("./db");
@@ -8,13 +9,15 @@ initialiseDb();
 
 const app = express();
 
+app.use(
+    express.static(path.join("__dirname", "etch-client", "dist", "etch-client"))
+);
 app.use(express.json());
 
 app.post("/api/login", (req, res) => {
     res.send("hello");
 });
-app.use(authenticate);
-app.get("/api/cards", (req, res) => {
+app.get("/api/cards", authenticate, (req, res) => {
     res.send("lots of cards");
 });
 
