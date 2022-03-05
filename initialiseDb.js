@@ -12,6 +12,7 @@ function initialiseDb() {
             );
         `);
     });
+    return db;
 }
 
 module.exports = initialiseDb;

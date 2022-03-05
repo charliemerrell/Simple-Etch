@@ -7,7 +7,6 @@ function authenticate(req, res, next) {
             authHeader?.split(" ")[1],
             "base64"
         ).toString();
-        console.log(password);
         if (password === process.env.PASSWORD) {
             return next();
         }
