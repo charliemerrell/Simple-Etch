@@ -9,6 +9,12 @@ const app = express();
 
 if (process.env.NODE_ENV === "production") {
     const cors = require("cors");
+    const hsts = require("hsts");
+    app.use(
+        hsts({
+            maxAge: 15552000,
+        })
+    );
     const corsOptions = {
         origin: process.env.CLIENT_URL,
         optionsSuccessStatus: 200,
